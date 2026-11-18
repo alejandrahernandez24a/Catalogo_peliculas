@@ -28,7 +28,7 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
     super.dispose();
   }
 
-  // Confirmar antes de eliminar una película.
+ 
   Future<void> _confirmarEliminacion(Pelicula pelicula) async {
     final confirmar = await showDialog<bool>(
       context: context,
@@ -78,8 +78,7 @@ class _CatalogoScreenState extends State<CatalogoScreen> {
       );
     }
   }
-
-  // Construir cada tarjeta del catálogo.
+ 
   Widget _tarjetaPelicula(Pelicula pelicula, bool esAdmin) {
     return Card(
       clipBehavior: Clip.antiAlias,

@@ -16,7 +16,7 @@ class AgregarPeliculaScreen extends StatefulWidget {
 class _AgregarPeliculaScreenState
     extends State<AgregarPeliculaScreen> {
 
-  // Controladores del formulario
+ 
   final _formKey = GlobalKey<FormState>();
 
   final _consultaApi = TextEditingController();
@@ -27,11 +27,11 @@ class _AgregarPeliculaScreenState
   final _sinopsis = TextEditingController();
   final _imagenUrl = TextEditingController();
 
-  // Estados de carga
+ 
   bool _guardando = false;
   bool _buscandoApi = false;
 
-  // Liberar controladores
+ 
   @override
   void dispose() {
     _consultaApi.dispose();
@@ -44,7 +44,7 @@ class _AgregarPeliculaScreenState
     super.dispose();
   }
 
-  // Buscar información mediante HTTP
+  
   Future<void> _buscarPeliculaInternet() async {
   final termino = _consultaApi.text.trim();
 
@@ -106,7 +106,7 @@ class _AgregarPeliculaScreenState
   }
 }
 
-  // Guardar película en Firestore
+  
   Future<void> _guardarPelicula() async {
     if (!_formKey.currentState!.validate()) return;
 

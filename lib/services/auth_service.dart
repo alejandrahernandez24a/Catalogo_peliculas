@@ -6,13 +6,13 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // Obtener el usuario actual
+ 
   User? get usuarioActual => _auth.currentUser;
 
-  // Escuchar cambios de sesión
+ 
   Stream<User?> get cambiosSesion => _auth.authStateChanges();
 
-  // Registrar usuario
+ 
   Future<UserCredential> registrar({
     required String nombre,
     required String email,
@@ -23,7 +23,7 @@ class AuthService {
       password: password,
     );
 
-    // Guardar información del usuario en Firestore
+   
     await _db.collection('usuarios').doc(credencial.user!.uid).set({
       'nombre': nombre.trim(),
       'email': email.trim(),
@@ -34,7 +34,7 @@ class AuthService {
     return credencial;
   }
 
-  // Iniciar sesión
+ 
   Future<UserCredential> iniciarSesion({
     required String email,
     required String password,

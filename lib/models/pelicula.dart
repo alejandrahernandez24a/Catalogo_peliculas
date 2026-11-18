@@ -18,7 +18,7 @@ class Pelicula {
     required this.imagenUrl,
   });
 
-  // Convertir un documento de Firestore en una película.
+ 
   factory Pelicula.fromMap(String id, Map<String, dynamic> data) {
     return Pelicula(
       id: id,
@@ -31,7 +31,7 @@ class Pelicula {
     );
   }
 
-  // Convertir una película en un mapa para Firestore.
+ 
   Map<String, dynamic> toMap() {
     return {
       'titulo': titulo,

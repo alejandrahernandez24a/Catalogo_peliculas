@@ -36,7 +36,7 @@ class CatalogoApiService {
       throw Exception('Escribe el título de una película.');
     }
 
-    // 1. Buscar la película en TMDB.
+ 
     final urlBusqueda = Uri.parse(
       '$_baseUrl/search/movie',
     ).replace(
@@ -78,7 +78,7 @@ class CatalogoApiService {
       return null;
     }
 
-    // 2. Obtener el identificador de la primera coincidencia.
+  
     final primeraPelicula =
         resultados.first as Map<String, dynamic>;
 
@@ -88,7 +88,7 @@ class CatalogoApiService {
       throw Exception('TMDB no devolvió el ID de la película.');
     }
 
-    // 3. Consultar detalles y créditos.
+    
     final urlDetalle = Uri.parse(
       '$_baseUrl/movie/$id',
     ).replace(
@@ -115,7 +115,7 @@ class CatalogoApiService {
       utf8.decode(respuestaDetalle.bodyBytes),
     ) as Map<String, dynamic>;
 
-    // 4. Obtener el director desde los créditos.
+   
     final creditos = pelicula['credits'] as Map<String, dynamic>?;
 
     final equipo = creditos?['crew'] as List? ?? [];
@@ -126,7 +126,7 @@ class CatalogoApiService {
         .where((nombre) => nombre.isNotEmpty)
         .join(', ');
 
-    // 5. Obtener los géneros.
+    
     final generos = pelicula['genres'] as List? ?? [];
 
     final genero = generos
@@ -135,14 +135,14 @@ class CatalogoApiService {
         .where((nombre) => nombre.toString().isNotEmpty)
         .join(', ');
 
-    // 6. Construir la URL del póster.
+ 
     final posterPath = pelicula['poster_path'];
 
     final imagenUrl = posterPath != null
         ? '$_imageBaseUrl$posterPath'
         : '';
 
-    // 7. Obtener el año de estreno.
+    
     final fecha = DateTime.tryParse(
       pelicula['release_date']?.toString() ?? '',
     );

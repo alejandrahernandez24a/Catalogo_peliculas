@@ -6,7 +6,7 @@ class PeliculaService {
   final CollectionReference<Map<String, dynamic>> _coleccion =
       FirebaseFirestore.instance.collection('peliculas');
 
-  // Consultar todas las películas en tiempo real.
+   
   Stream<List<Pelicula>> obtenerPeliculas() {
     return _coleccion.orderBy('titulo').snapshots().map((snapshot) {
       return snapshot.docs.map((documento) {
@@ -18,12 +18,12 @@ class PeliculaService {
     });
   }
 
-  // Registrar una película.
+ 
   Future<void> agregarPelicula(Pelicula pelicula) async {
     await _coleccion.add(pelicula.toMap());
   }
 
-  // Consultar una película por su identificador.
+ 
   Future<Pelicula?> obtenerPelicula(String id) async {
     final documento = await _coleccion.doc(id).get();
 
@@ -37,7 +37,7 @@ class PeliculaService {
     );
   }
 
-  // Eliminar una película.
+ 
   Future<void> eliminarPelicula(String id) async {
     await _coleccion.doc(id).delete();
   }
